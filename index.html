@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>三千世界 · 凡人西游篇</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --ink:#27221a;--sub:#756b5b;--muted:#a19684;--paper:#f7f1e7;--paper2:#fffaf1;
+  --line:#dfd3c1;--gold:#927240;--green:#3e5f4b;--deep:#223629;--shadow:rgba(50,38,20,.14)
+}
+html,body{min-height:100%}
+body{
+  font-family:"Songti SC","Noto Serif SC","STSong","SimSun",serif;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,250,238,.94) 0 22%, transparent 58%),
+    linear-gradient(180deg,#e5ded0 0%,#d9d6c8 56%,#cdd4c5 100%);
+  color:var(--ink);overflow-x:hidden;letter-spacing:.02em
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-3;
+  background:repeating-linear-gradient(90deg,rgba(82,84,60,.025) 0 1px,transparent 1px 10px)
+}
+body::after{
+  content:"";position:fixed;left:0;right:0;bottom:0;height:42vh;pointer-events:none;z-index:-2;
+  background:
+    linear-gradient(165deg,transparent 0 20%,rgba(67,84,70,.18) 20% 52%,transparent 52%),
+    linear-gradient(12deg,rgba(70,88,72,.22) 0 38%,transparent 38%),
+    linear-gradient(178deg,transparent 0 22%,rgba(60,78,63,.22) 22% 62%,transparent 62%);
+  opacity:.74;filter:blur(.1px)
+}
+.page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:22px 16px 28px}
+.sheet{
+  width:min(720px,100%);border-radius:30px;padding:20px;
+  background:rgba(255,250,239,.52);border:1px solid rgba(255,255,255,.65);
+  box-shadow:0 26px 70px var(--shadow), inset 0 0 0 1px rgba(121,99,62,.12)
+}
+.inner{
+  border-radius:24px;padding:34px 28px;background:linear-gradient(180deg,rgba(255,252,245,.9),rgba(250,244,233,.82));
+  border:1px solid rgba(151,126,85,.20);box-shadow:inset 0 0 0 1px rgba(255,255,255,.32)
+}
+.splash{text-align:center;position:relative;overflow:hidden}.seal{font-size:13px;letter-spacing:.4em;color:var(--green);font-weight:700;margin-bottom:28px}.title{font-size:42px;line-height:1.2;font-weight:900;letter-spacing:.18em}.title span{color:var(--green)}.subtitle{margin:28px auto 10px;max-width:430px;line-height:2.05;font-size:18px;color:#4b4236}.meta{margin-top:18px;color:var(--muted);font-size:14px}.btn{font-family:inherit;border:none;cursor:pointer;border-radius:999px;padding:15px 34px;background:linear-gradient(180deg,#9b7740,#7e5f32);color:#fff8e8;font-size:18px;font-weight:800;letter-spacing:.08em;box-shadow:0 14px 32px rgba(103,74,33,.22);transition:.18s}.btn:active{transform:translateY(1px) scale(.99)}.btn.secondary{background:rgba(255,252,244,.62);color:#756149;border:1px solid rgba(143,119,83,.28);box-shadow:none}.btn.ghost{background:transparent;color:#756149;border:1px solid rgba(143,119,83,.28);box-shadow:none}.splash .btn{margin-top:34px}.topline{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;color:var(--muted);font-size:14px}.progress{height:4px;border-radius:99px;background:rgba(91,80,59,.12);overflow:hidden;margin-bottom:34px}.progress span{display:block;height:100%;background:linear-gradient(90deg,#6c8a69,#9a7a42);border-radius:99px;transition:.35s}.chapter{text-align:center;color:var(--green);letter-spacing:.35em;font-weight:800;font-size:18px;margin-bottom:24px}.question{font-size:31px;line-height:1.58;font-weight:900;margin-bottom:20px;letter-spacing:.02em}.hint{font-size:17px;line-height:1.7;color:#8f836f;margin-bottom:28px;font-family:"Songti SC","Noto Serif SC",serif}.options{display:flex;flex-direction:column;gap:15px}.option{width:100%;display:flex;gap:18px;align-items:flex-start;text-align:left;border:1px solid rgba(130,111,82,.23);background:rgba(255,253,247,.58);border-radius:24px;padding:22px 24px;color:var(--ink);font-family:inherit;font-size:22px;line-height:1.62;cursor:pointer;box-shadow:0 6px 16px rgba(72,54,28,.035);transition:.18s}.option .mark{flex:0 0 38px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(64,91,70,.09);color:var(--green);font-family:ui-serif,Georgia,serif;font-weight:900;font-size:17px;margin-top:2px}.option:hover,.option.selected{border-color:rgba(84,103,74,.42);background:rgba(246,249,239,.82);transform:translateY(-1px)}.navrow{display:flex;justify-content:space-between;gap:12px;margin-top:28px}.result-head{text-align:center;margin-bottom:22px}.smalltitle{color:var(--muted);font-size:15px;letter-spacing:.32em;margin-bottom:8px}.identity-name{font-size:38px;font-weight:900;letter-spacing:.12em}.identity-emoji{font-size:44px;margin:4px 0}.identity-meta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:22px 0}.pill{border:1px solid rgba(126,102,67,.22);background:rgba(255,252,244,.55);border-radius:999px;padding:7px 14px;color:#7a6b56;font-size:14px}.storybox{font-size:20px;line-height:2.08;color:#302920;background:rgba(255,252,246,.54);border:1px solid rgba(130,111,82,.18);border-radius:22px;padding:24px 25px;margin:22px 0}.storybox p{margin:.3em 0 1.05em}.storybox p:last-child{margin-bottom:0}.choice-title{text-align:center;color:var(--muted);letter-spacing:.28em;font-size:15px;margin-bottom:18px}.story-choice{font-size:21px}.final-page{min-height:100vh;padding:36px 18px 70px;display:flex;justify-content:center}.reading{width:min(650px,100%);padding:38px 30px 30px;background:linear-gradient(180deg,rgba(255,252,244,.9),rgba(249,242,229,.86));border:1px solid rgba(126,102,67,.18);border-radius:28px;box-shadow:0 26px 70px rgba(57,45,27,.13)}.reading-title{text-align:center;margin-bottom:24px}.reading-title .over{font-size:14px;letter-spacing:.34em;color:var(--muted);margin-bottom:8px}.reading-title h2{font-size:30px;letter-spacing:.12em}.reading-text{font-size:20px;line-height:2.25;letter-spacing:.035em;color:#2c251c}.reading-text p{margin:0 0 1.15em}.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(120,99,66,.25),transparent);margin:28px 0}.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.fade{animation:fade .36s ease both}@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:560px){.page{padding:12px}.sheet{border-radius:26px;padding:10px}.inner{padding:28px 22px;border-radius:22px}.title{font-size:34px}.question{font-size:26px}.option{font-size:18px;padding:18px 18px;border-radius:20px}.storybox,.reading-text{font-size:18px}.reading{padding:30px 22px}.actions .btn{width:100%}.btn{font-size:16px}}
+.result-hero-image,.final-branch-image{width:100%;max-height:520px;object-fit:cover;border-radius:24px;display:block;margin:24px 0 28px;box-shadow:0 18px 50px rgba(50,38,20,.14)}
+@media(max-width:560px){.result-hero-image,.final-branch-image{max-height:400px;border-radius:20px}}
+</style>
+</head>
+<body>
+<section id="splash" class="page"><div class="sheet splash"><div class="inner"><div class="seal">凡人西游篇</div><h1 class="title">三千<span>世界</span></h1><p class="subtitle">神仙有神仙的劫，妖怪有妖怪的洞府。<br>可凡人也有一生绕不过去的事。</p><p class="meta">十二念选 · 一盏茶的时间</p><button class="btn" onclick="startTest()">翻开此世</button></div></div></section>
+<section id="test" class="page" style="display:none"><div class="sheet"><div class="inner"><div class="topline"><span id="progressText">1 / 12</span><span>凭第一念</span></div><div class="progress"><span id="progressFill" style="width:8.33%"></span></div><div id="questionArea"></div></div></div></section>
+<section id="result" class="page" style="display:none"><div class="sheet"><div class="inner" id="resultContent"></div></div></section>
+<section id="storyPhase" class="page" style="display:none"><div class="sheet"><div class="inner"><div class="choice-title" id="storyTitle">入世一问</div><div id="storyContent"></div></div></div></section>
+<section id="finalStory" class="final-page" style="display:none"><div class="reading" id="finalContent"></div></section>
+<script>// ====== 凡人西游篇 · 数据 ======
+
+var IDENTITIES = {
+  "凡人_说书人":{id:"凡人_说书人",name:"说书人",emoji:"📖",type:"凡人",
+    story:"你在长安城西市的茶馆说了一辈子书。从猴王大闹天宫到唐僧取经，每一段你都会。说得最多的是猴王被压五行山那一段。每次讲到『佛祖翻掌一压，猴王悔不当初』，你的醒木都会落得很轻。很多年前有个客人听完这一段，说：你这段讲得太规矩。哪日讲活了，我再来听。你等了很多年。那人没再来过。"},
+  "凡人_店小二":{id:"凡人_店小二",name:"店小二",emoji:"🍶",type:"凡人",
+    story:"你十二岁进客栈当跑堂。迎来送往，什么人你都见过。你记得每个熟客的忌口，但没人记得你不吃葱。你告诉自己没事，干活嘛，又不是来让人记着的。但每次客人走的时候你都会多等一会儿，看他们会不会回头说一句：谢了啊。"},
+  "凡人_厨子":{id:"凡人_厨子",name:"厨子",emoji:"🍳",type:"凡人",
+    story:"你年轻时喜欢过一个人。你没说。你给她做了三年的荷包蛋汤面。她后来嫁到外地。你关了一星期的店。再开门的时候菜单上没了荷包蛋汤面。有人问怎么没了，你说手生了。后来你娶了妻，有了女儿。女儿五岁那年吵着要吃荷包蛋汤面。你给她做了一碗。你尝了一口汤，愣了一会儿。很好吃。你得意得想，不愧是我。"},
+  "凡人_镖师":{id:"凡人_镖师",name:"镖师",emoji:"🗡️",type:"凡人",
+    story:"你年轻时走错过路。等你赶到的时候，等你的那个人已经走了。没人怪你。大家都说情有可原。你没说话。后来你做了镖师，一趟镖都没晚过。别人说你守信用。你自己知道不是。你只是莫名想要赶上些什么，是什么呢。你不知道。"},
+  "凡人_账房先生":{id:"凡人_账房先生",name:"账房先生",emoji:"🧮",type:"凡人",
+    story:"你拨了一辈子算盘。你怕欠，所以每一笔都算得清清楚楚。那天老妇人来取亡夫的存银，你翻到账本最后一页，上任账房先生的笔迹，他在这里做了三十年。备注栏里写着：生辰，桂花糖。字不大，像是随手记的。下面有一道浅线，像是犹豫过，后来又划了。你认得这笔迹。你坐在同一把椅子上，拨着同一副算盘。你不知道他最后送了没有。"},
+  "凡人_绣娘":{id:"凡人_绣娘",name:"绣娘",emoji:"🪡",type:"凡人",
+    story:"你绣了半辈子花。镇上谁家姑娘出嫁、哪户老太做寿，都找你。你手巧，心也细，什么花样看一眼就能绣出来。有一年你偷偷绣一块帕子，相伴相飞的两只蝴蝶，艳丽的牡丹。但是你路过他家院子，看见晾衣绳上挂着那女人的衣裳。红的，料子普通，针脚粗糙。你看了转身就走。帕子锁进箱子，再没打开过。"},
+  "凡人_采药人":{id:"凡人_采药人",name:"采药人",emoji:"🌿",type:"凡人",
+    story:"你认识山上每一棵草。哪棵治风寒，哪棵止血，哪棵能让人忘掉不想记起的事。有人问你怎么记住的。你说草不会骗人。你救过很多人，也救过不是人的东西。有一年冬天你在山路上捡到一只受伤的白狐。你把它抱回来，治了一整个冬天。开春它走了，走到山口回头看了你一眼。后来山下出了事。"},
+  "凡人_守夜人":{id:"凡人_守夜人",name:"守夜人",emoji:"🏮",type:"凡人",
+    story:"你从小就怕黑。不是那种撒娇的怕，是真怕。但你爹说，打更这活总得有人干。你接了他的梆子，头三个月每天晚上腿都在抖。"}
+};
+
+var QUESTIONS = [
+  {q:"一行陌生人忽然经过街口，众人都停下来看。你第一眼会落在哪里？",opts:[
+    {t:"他们从哪里来，又会把这个地方带成怎样的传闻",s:{"凡人_说书人":2,"凡人_镖师":1}},
+    {t:"他们衣角还在滴水，脸上有倦色。你先想，灶上还有没有热汤",s:{"凡人_厨子":2,"凡人_店小二":1,"凡人_采药人":1}},
+    {t:"队伍走得整不整齐，身后有没有别的动静",s:{"凡人_镖师":2,"凡人_守夜人":1,"凡人_账房先生":1}},
+    {t:"人群一下围上去。你反倒退了半步，把手里的东西收进袖中",s:{"凡人_绣娘":2,"凡人_账房先生":1,"凡人_守夜人":1}}
+  ]},
+  {q:"忙完一整日，天色压下来。你最想把自己放在哪里？",opts:[
+    {t:"有一点人声的角落，听闲话，不必插嘴",s:{"凡人_说书人":2,"凡人_店小二":1}},
+    {t:"灶火或热水旁，手里做点事，心里才稳",s:{"凡人_厨子":2,"凡人_采药人":1}},
+    {t:"一张清静桌前，把乱的东西一件件理顺",s:{"凡人_账房先生":2,"凡人_绣娘":1}},
+    {t:"门外或街口，风吹着，眼睛看得远些",s:{"凡人_守夜人":2,"凡人_镖师":1}}
+  ]},
+  {q:"别人把一件麻烦事推到你面前。你最先动的念头是？",opts:[
+    {t:"先问清来龙去脉，别让一句话冤了谁",s:{"凡人_账房先生":2,"凡人_说书人":1}},
+    {t:"先做眼前能做的一点，别让人站在那里干等",s:{"凡人_店小二":2,"凡人_采药人":1,"凡人_厨子":1}},
+    {t:"先看会不会牵连更多人，别一脚踩进局里",s:{"凡人_镖师":2,"凡人_守夜人":1}},
+    {t:"先把自己的神色收好，不让旁人看出端倪",s:{"凡人_绣娘":2,"凡人_账房先生":1}}
+  ]},
+  {q:"一封迟来的消息落到你手里。哪一种最叫你难受？",opts:[
+    {t:"原来那人一直记得，只是没有回来",s:{"凡人_说书人":1,"凡人_绣娘":2}},
+    {t:"原来自己当年迟了一步，真的改了别人的一生",s:{"凡人_镖师":2,"凡人_账房先生":1}},
+    {t:"原来一番好心，也可能在后来生出祸端",s:{"凡人_采药人":2,"凡人_守夜人":1}},
+    {t:"原来有人惦记过你，你却到很晚才知道",s:{"凡人_店小二":2,"凡人_厨子":1}}
+  ]},
+  {q:"你很用心做了一件事，对方没看懂。你会怎样把它放下？",opts:[
+    {t:"嘴上说没事，心里却反复想是不是哪里没做好",s:{"凡人_店小二":2,"凡人_账房先生":1}},
+    {t:"把那件东西收起来，暂时不让别人再碰",s:{"凡人_绣娘":2,"凡人_厨子":1}},
+    {t:"转身做下一件。做完了，就是做完了",s:{"凡人_镖师":2,"凡人_采药人":1}},
+    {t:"过些日子把它讲成一个笑话，像没那么要紧",s:{"凡人_说书人":2,"凡人_守夜人":1}}
+  ]},
+  {q:"夜里门外轻轻响了一声。屋里灯还没灭。你会？",opts:[
+    {t:"提灯去看。越怕，越要亲眼看一眼",s:{"凡人_守夜人":2,"凡人_镖师":1}},
+    {t:"先听一会儿，分清是风、人，还是别的东西",s:{"凡人_账房先生":1,"凡人_采药人":1,"凡人_守夜人":1}},
+    {t:"把热水备着。真有人来，至少先有口热的",s:{"凡人_店小二":2,"凡人_厨子":1}},
+    {t:"先确认箱子和门窗都好好的，再慢慢起身",s:{"凡人_绣娘":2,"凡人_账房先生":1}}
+  ]},
+  {q:"若很多年后还有人提起你，你希望他记得什么？",opts:[
+    {t:"记得你讲过的一句话，当年听着普通，后来才懂",s:{"凡人_说书人":2}},
+    {t:"记得你给过一口热的，哪怕只是半碗汤",s:{"凡人_店小二":2,"凡人_厨子":1}},
+    {t:"记得你答应过的事，最后都送到了",s:{"凡人_镖师":2,"凡人_账房先生":1}},
+    {t:"不必记得你，只别糟蹋你留下的东西",s:{"凡人_绣娘":2,"凡人_采药人":1}}
+  ]},
+  {q:"路边有人求你帮忙，你知道这事可能惹麻烦。你会？",opts:[
+    {t:"先把人扶起来。后面的事，等人缓过来再说",s:{"凡人_采药人":2,"凡人_店小二":1}},
+    {t:"帮，但话要说清，界限也要留明白",s:{"凡人_账房先生":2,"凡人_镖师":1}},
+    {t:"不靠得太近，给他指条路，或放下一点东西",s:{"凡人_绣娘":1,"凡人_守夜人":1}},
+    {t:"若答应了，就干脆送到底，别半路撒手",s:{"凡人_镖师":2,"凡人_厨子":1}}
+  ]},
+  {q:"有件旧事多年后忽然冒出来，通常是因为？",opts:[
+    {t:"听见一句像当年的话，心里那段书又翻开了",s:{"凡人_说书人":2,"凡人_店小二":1}},
+    {t:"看见一件没送出去的东西，还安安静静放在那里",s:{"凡人_绣娘":2,"凡人_厨子":1}},
+    {t:"路过某个地方，想起自己曾经慢了一步",s:{"凡人_镖师":2,"凡人_守夜人":1}},
+    {t:"遇见一个相似的人，忽然不知道当年算不算救错",s:{"凡人_采药人":2,"凡人_账房先生":1}}
+  ]},
+  {q:"面对一件旧物，你更容易做什么？",opts:[
+    {t:"看着它，把前因后果在心里又讲一遍",s:{"凡人_说书人":2,"凡人_绣娘":1}},
+    {t:"修一修、擦一擦，让它还能继续用",s:{"凡人_厨子":2,"凡人_采药人":1,"凡人_店小二":1}},
+    {t:"弄清它从哪来、该归谁、还有没有欠着什么",s:{"凡人_账房先生":2,"凡人_镖师":1}},
+    {t:"收进深处，偶尔确认它还在那里",s:{"凡人_绣娘":2,"凡人_守夜人":1}}
+  ]},
+  {q:"有人在你身边坐了很久，一句话也不说。你会？",opts:[
+    {t:"给他续水，不催。他坐多久，你就让那盏茶热多久",s:{"凡人_店小二":2,"凡人_说书人":1}},
+    {t:"停下手里的活，问一句：要不要我帮你看看",s:{"凡人_采药人":2,"凡人_厨子":1}},
+    {t:"继续做自己的事。沉默若是他的，你不抢",s:{"凡人_绣娘":2,"凡人_账房先生":1}},
+    {t:"看一眼天色，提醒他该回时要回",s:{"凡人_守夜人":2,"凡人_镖师":1}}
+  ]},
+  {q:"走到人生最后，你最怕哪一种空？",opts:[
+    {t:"满腹故事，却没人知道哪一句是真的",s:{"凡人_说书人":2}},
+    {t:"一桌热饭摆好，重要的人却没有坐下来",s:{"凡人_厨子":2,"凡人_绣娘":1}},
+    {t:"答应过的话，最后还是没有落地",s:{"凡人_镖师":2,"凡人_账房先生":2}},
+    {t:"门外有动静，你明明听见，却没有走过去",s:{"凡人_守夜人":2,"凡人_采药人":2,"凡人_店小二":1}}
+  ]}
+];
+
+// ====== 故事片段（凡人类通用） ======
+var STORIES = {
+  "凡人_说书人":[
+    {scene:"雨天的下午。茶馆里稀稀拉拉坐了几个人。你正讲到猴王被压山下，门帘一掀，走进一个毛脸客人，蹲在角落听了一会儿。讲到『猴王悔不当初』的时候，他忽然笑了一声，说：哪有那么多悔。你的醒木停在半空。",choices:[
+      {text:"你承认了。你换了一个讲法。",result:"你放下醒木。沉默了一会儿。然后你重新开口，讲的还是五行山，但换了一个讲法。猴王被压在山下，第一年他想出来，第二年他还想，第三年他不想了。不是认命，他就那么待着。他知道当初闹天宫的时候，他没后悔过。你讲到这儿停了一下。你忽然发现，你替猴子悔的那些年，其实是你自己的。你等的那个人不会来了。他说讲活了再回来，可你讲活的那一天，其实不需要他在场。雨还在下。后来你还是说书。你没有在等那个人了。你的醒木落得很爽利。"},
+      {text:"你不承认。你拍醒木翻到热闹处。",result:"你说：悔不悔的，各人心里有数。一拍醒木，翻到天兵十万、山崩地裂。满堂叫好。你讲得比哪一天都卖力。散场后角落里空了，桌上多了一枚野果。不知道什么时候放的。你没吃，放在窗台上。后来你还是每天说书。但你每次讲到五行山的时候，都会少敲一下醒木。那枚野果干了缩了，你收在醒木旁边，一晃就骨碌碌转，像那天他嘴角那点笑意。你留了好几年。它就是一枚干果。但你每次看到它，就知道有个人在某一个下雨的傍晚，听你说了书。"}
+    ]}
+  ],
+  "凡人_店小二":[
+    {scene:"雨夜。掌柜正要关门，门外进来几个人。一个和尚浑身湿透了，说想投宿。掌柜说满了。你看见门口还蹲着一个瘦小的，头发贴在脸上。还有一个胖的，缩着脖子饿得直盯厨房。",choices:[
+      {text:"你冒着被骂的风险留下了他们。",result:"掌柜回头瞪你一眼。你没躲。你说柴房空着也是空着。你把他们领到后院，抱了干草生了火。胖和尚坐下来第一句话：有吃的吗？你去厨房端了一碟冷馒头。他没嫌，几口就没了。第二天一早你起来，发现柴房收拾得干干净净，干草捆好了，地扫过了。和尚走的时候合掌说多谢。你低头说没事。后来你自己开了家小店，门口挂了一块牌子：风雨夜不赶客。"},
+      {text:"你没敢留，但偷偷送了热茶和馒头。",result:"你低着头走开了。他们走了以后你揣了一壶热茶和一包冷馒头追出去，他们已经走远了。你放在路边土地庙的供台上。第二天你去看，壶空了。后来你每次值夜都会多烧一壶水。不一定有人来喝，但万一有人半夜敲门，你至少有一壶热的。你告诉自己这叫顺手。但你心里知道不是的。"}
+    ]}
+  ],
+  "凡人_厨子":[
+    {scene:"一个下午，店里来了四个怪人。先进来一个和尚合掌说化碗素面。接着一个毛脸雷公嘴的蹲在凳子上东张西望。一个肥头大耳的挤进来盯着你的灶台看。最后一个挑担的沉默大汉双手作揖。你握着勺，手心出汗。",choices:[
+      {text:"你害怕，把他们请出去了。",result:"你陪笑说小店今日不便，把门上了闩。你关店躲了几日，但风平浪静。后来你开了店，面汤照熬。你心里记着这件事，以后做面的时候偶尔会多放一勺料。万一还有人饿着肚子路过。"},
+      {text:"你觉得他们没有恶意，系上围裙。",result:"你说师父们想吃什么，管够。你给他们一人做了一碗荷包蛋汤面。胖和尚哼哧哼哧几口就见底，碗举在半空看你。你又给他添了半碗。毛脸的先把荷包蛋挑出来吃了。挑担的和尚吃完把碗端到灶台边自己洗干净。他们走的时候，胖和尚在后头磨蹭了一下，把一颗金色的丹药放在桌上。入夜，妻女来接你回家。女儿说爹我今天想吃你做的面。你说好。你牵着她走回家。那颗丹药你一直没用过。但你知道，这世上有人吃了你的面，觉得你这人不错。"}
+    ]}
+  ],
+  "凡人_镖师":[
+    {scene:"雪下了一整天。东家递给你一只旧木匣，说送到流沙河对面。有人劝你明早再走。你摇头，把木匣裹进怀里牵马出门。到河边的时候天全黑了。一个穿旧袈裟的和尚蹲在岸边，说：风雪这么大，还过？",choices:[
+      {text:"你过河。",result:"你牵着马下了水。水冷到骨头里。快被冲走的时候，那个和尚抓住了你的手腕。到岸的时候你浑身发抖。他生了堆火。你盯着火苗，他叹了口气，说：你是怕自己好受，还是怕没送到？你想起年轻时那次迟到。你在惩罚自己。火堆噼啪响。你道谢离开。那趟迟到半生的路，今夜算是走完了。"},
+      {text:"你等到天亮再过河。",result:"你蹲在岸边等雪小一点。和尚也没走。你们就着一个火堆坐了一夜。天快亮雪小了，你牵马过河。接头人掂了掂木匣，随手搁在柜台上，说风雪这么大，晚些也好。你盯着那个木匣，原来只是一个无关紧要的物件。回去的路上你路过火堆余烬，蹲下来添了几根枯枝。后来你走镖还是会准时，但你不再拿命赶了。"}
+    ]}
+  ],
+  "凡人_账房先生":[
+    {scene:"老妇人站在柜台前取亡夫的存银。黄昏的光从门口斜进来。你把算珠拨到最后一行。那颗珠子停在中间没落下。门口蹲着一个借宿的毛脸客人，回头瞟了一眼你的账本。",choices:[
+      {text:"你把账算清了，但你告诉了她。",result:"你松开手指。珠子落下去。你翻到最后一页，把那行生辰桂花糖指给她看。她看了好一会儿，笑了一下：他记性差，每年都写。他活着的时候我年年等着。他死了我不用等了。她把账本推回来：字在，他就在。你算了三十年账，第一次知道有人会把同一件小事惦记三十年。有些账算不算清，根本不重要。"},
+      {text:"你多给了她一些，撒了个谎。",result:"你用指尖把珠子拨回去了。账面还是平的，但你报出来的数多了一点。她说是不是算错了。你说没有，是他生前多存的。她走的时候说谢谢。你没告诉她那行字的事。后来你还是每天拨算盘，偶尔翻到那一页，看一眼那四个字。你知道，写了就算数。你不认识他，但你坐在他坐过的椅子上，替他记住了这件他惦记了三十年的事。"}
+    ]}
+  ],
+  "凡人_绣娘":[
+    {scene:"取经人来镇上歇脚。一个和尚的旧袈裟破了，托你补。你坐在窗边穿针引线。一个胖和尚东看西看，走到你床头的箱子前蹲下去，手伸向那把铜锁。他说：这锁真好看，哪儿打的？",choices:[
+      {text:"你打开箱子。",result:"你说别碰。你走过去蹲下，锁开了。帕子还在。那片花瓣还停在三年前的位置。你没拿出来，只是看着。胖和尚在你身后小声说：这个没绣完啊。你看着那块帕子，像是看另一个人。你恨的不是那件衣裳，你是恨那个站在人家门口发呆的自己。你伸出手指在那片花瓣上轻轻蹭了一下。然后合上盖子锁好。那天晚上你睡得很好。有些东西不用送出去，你把它停在最好看的时候，就够了。"},
+      {text:"你没开箱。",result:"你说出去。胖和尚缩回手缩着脖子出去了。门带上的时候他听见外面有人低声说：让你别乱翻人家东西。你靠着箱子坐着。铜锁硌在后腰上。天快黑的时候你把袈裟补完了，拿出去递给等在门口的和尚。他们走了。你站在门口看了一会儿他们的背影。那个方向是往西的。去年他娶的那女人也是往西去的。你转身回去坐到窗边，拿了一块新布。你不知道要绣什么，你只是觉得手还可以动。你落下一针，夜色漫上来的时候你绣了一支小桂花。安安静静的，不用很多瓣。"}
+    ]}
+  ],
+  "凡人_采药人":[
+    {scene:"你正对着药柜发呆。门被推开了，进来一个人，掌心有一道很深的伤口。他说有药吗。你低头给他上药，忽然看到他腰间挂着一根金色的毛。不是人的。",choices:[
+      {text:"你把最好的药给出去。",result:"你转身打开药柜最上层，把那束晒了三年的药拿下来分了一半给他。他看了你一眼，说用不了这么多。你没接话，把药包好塞进他手里。他走了。你站在门口看着他的背影。你忽然想通了：你救那只白狐没错，你救人也没错。伤人的不一定是妖。你只管做你该做的事。至于别人拿你的药去做什么，那不是你能管的。"},
+      {text:"你没给那束药，给了普通的，留了心。",result:"你给他包了普通的药。他走后你把那束最好的药收得更深了。那天晚上你睡不着，起来翻了一遍药典。你在白狐那一条下面补了一行字：也可救人。后来你每天早上开门的时候，会在门口放一小碗水。不知道给谁喝的。但每天早上碗都空了。"}
+    ]}
+  ],
+  "凡人_守夜人":[
+    {scene:"夜很深了。你走完第二圈在肉铺后巷停下来歇脚。忽然听到巷子深处有呼吸声，很低很粗，像什么东西蹲在阴影里。包子铺老板娘的孩子刚满月，老账房咳了半个月。你想起你爹说的——城里总得有人醒着。",choices:[
+      {text:"你举起灯笼照过去。",result:"你咬着牙把灯笼举起来。光一截一截往前推。照到巷底，什么都没有。但地上有一串脚印，不像人的，浅浅的三瓣的，像是踮着脚走过去。脚印往西去了。后来你每天走那条巷子都举着灯笼，走完了三十年。你直到老死都不知道那双金色眼睛到底是什么。但你记得那年冬天，你举起了灯笼。光从你手里漫出去的时候，你听见巷子深处那阵呼吸声停了。你们在黑暗里对视了一会儿，然后它走了。你一直站在原地，灯笼举着，直到天边透出灰蓝色。你怕了一辈子，也守了一辈子。"},
+      {text:"你敲响了梆子。",result:"你用力敲了三下。有人推开窗户，有人点起灯。包子铺老板娘探头问怎么了。你说没事，敲错了。她哦了一声把窗户关上了，但灯没灭。你站在后巷，梆子还握在手里。第二天早上老板娘多塞给你两个包子。后来你走夜路还是怕，但你学会了——怕也没事，你敲了，就有人知道你在这里。你爹把梆子交给你的时候什么也没说。你后来才懂：他守了这么多年也不是不怕，他只是一直在敲。"}
+    ]}
+  ]
+};
+
+var STORY_ENDINGS = {};
+STORY_ENDINGS["凡人_说书人"] = [
+  "你后来没再等他。但你每次敲醒木，都敲得比从前响。那不是给谁听的，是你自己心里爽快。你终于能把五行山那一段，从头到尾讲利落了。讲完之后你喝一口茶，茶凉了，但你不在乎。",
+  "你老了以后收了三个徒弟，一个爱听不听的，一个听完就忘的，一个听完哭了的。你也没正经教，就让他们坐着听。你说：你们什么时候把醒木拍出那个味，就算会了。他们都没学会。但你觉得刚好。"
+];
+STORY_ENDINGS["凡人_店小二"] = [
+  "后来你自己开了一家店，门口挂了个牌子——风雨夜不赶客。没有客人来的时候，你就擦桌子，把每一张桌子擦到能照见人的脸。有一夜又下雨了，门被推开，进来一个人，浑身湿透了。你给他倒了碗热茶。还是什么都没说。但他接过去的时候，看了你一眼。",
+  "你一辈子没离开过那间客栈。你记得每一个人坐过的位置。有一天一个老太太进来，说你瘦了。你不认识她。她说她小时候跟着她爹住过这儿，她爹说，这家店的小二是个好人，记得问他吃不吃葱。你愣了一会儿，给她煮了碗面。"
+];
+STORY_ENDINGS["凡人_厨子"] = [
+  "你女儿出嫁那天，你给她做了一碗面。不是荷包蛋汤面，是你在灶台前站了一晚上琢磨出来的新方子。她吃了一口说好吃。你背过身去，擦了擦灶台。这辈子你做的饭，有人吃了，有人说好吃。够了。",
+  "那天之后你试着把荷包蛋汤面加回了菜单，但自己做的始终不如当年那碗味道。有一天你忽然想通了——不是手艺变了，是那年你做的时候，心里是满的。你继续做面，不放荷包蛋了。但放了一勺你新调的酱。所有人都说好吃。你点点头，心里想：也行。"
+];
+STORY_ENDINGS["凡人_镖师"] = [
+  "后来你还走镖，但不太接急的了。你收了个徒弟，话少，走山路的时候总是在你前头。有一次过河他回头看你一眼，也没说话。你忽然想起那年雪夜河边的和尚。都是这样，什么都不说，但你知道有人在你前头。",
+  "你最后一次走镖，送的是一个很小的匣子。到地方你打开看了一眼——里面是一枚旧平安扣，刻着两个字。不是你名字。你又合上了，没问。回去以后你把所有押过的单子烧了。你不想算了。不够快的那趟，你再也不追了。"
+];
+STORY_ENDINGS["凡人_账房先生"] = [
+  "你把那本账本锁进柜子最底层，钥匙挂在身上。有一天你来接班，看见你儿子坐在柜台后面，正在拨那副算盘。他拨得很慢，但珠子一颗一颗很踏实。你站了一会儿没进去。你想起三十年前自己坐在那个位置上的样子。",
+  "老妇人的儿子后来回来过，来取她身后留下的东西。你说她什么都不剩了，只有一本账本。他翻了翻，看到那行字，问你：这是什么？你说：你爹留给你娘的。他看了很久，把账本合上了。他说谢谢。他走的时候，你算了算，这辈子记了那么多账，就这一笔你还想再记一会儿。"
+];
+STORY_ENDINGS["凡人_绣娘"] = [
+  "后来你偶尔还会打开那个箱子。蝴蝶还是没绣完，但你不觉得缺了。你把它放在枕头下面，夜里翻身的时候，能感觉到那一点微微的鼓。就像还有一件事没做完。但不是因为做不完才难受，是因为做不完才一直有念想。",
+  "你搬了一次家。开箱子的时候，那块帕子不见了。你翻了好久。后来你坐在床边，想了一会儿，没哭。你闭上眼睛，自己绣完了它——在心里。两只蝴蝶，翅膀是蓝的。你绣完了，睁开眼睛站起来，去把窗户打开了。窗外有人说话，天气很好。你走出去晒了晒太阳。"
+];
+STORY_ENDINGS["凡人_采药人"] = [
+  "你每天早上还是一碗水。后来碗换成一个陶盆，因为来的不止是那个东西了。有鸟来喝水，有猫来喝水，有一次你还看见一只小狐狸，站在墙头看了你一眼。你没有追。你加满了水，转身进屋。日子就这样过。",
+  "有一年大雪封山。有人半夜敲门，你开门一看，是一个浑身是血的人。你把他拖进来，点灯一看——不是人。他腰间挂着一根褪了色的金毛。你什么都没问。你给他上药，包扎，灌了一碗热汤。天快亮的时候他走了。门口留下一根新的金毛，亮闪闪的。你捡起来，放在药柜最上层。和那半束药放在一起。"
+];
+STORY_ENDINGS["凡人_守夜人"] = [
+  "你老了以后，走不了夜路了。你把梆子传给你儿子。他接了。第一天晚上他出门，在门口站了很久。你问他怎么了。他说：我有点怕。你说：怕就对了。他愣了。然后你又说：但该去还是得去。他出去了。你坐在门口等了一夜。梆子声一直没断。",
+  "那双金色的眼睛，你临死前又见到一次。灯已经快灭了，你没力气举了。你躺在那里。黑暗里亮起了一双金色的眼睛。这一次就在你面前，很近。它看了你一眼。你也看了它一眼。然后它闭了一下眼。你忽然觉得，那一眼的意思是——你守得很好。你闭上眼睛，手里的灯笼骨碌，滚到了床下。"
+];
+
+</script>
+<script>var currentQ=0,scores={},answers=[],selectedId=null,storyStep=0,storyChoices=[],selectedBranch='';
+var LETTERS=['A','B','C','D'];
+var RESULT_META={};
+RESULT_META["凡人_说书人"]={thing:"醒木",where:"长安西市茶馆",line:"你怕的不是故事没人听，是自己那点真心从未入过书。"};
+RESULT_META["凡人_店小二"]={thing:"一壶热茶",where:"雨夜客栈",line:"你总说顺手，其实也在等别人回头看你一眼。"};
+RESULT_META["凡人_厨子"]={thing:"荷包蛋汤面",where:"街角小面店",line:"旧味道后来回到锅里，先喂饱了你自己的日子。"};
+RESULT_META["凡人_镖师"]={thing:"旧木匣",where:"流沙河渡口",line:"你赶的不是一趟镖，是多年以前没赶上的那一步。"};
+RESULT_META["凡人_账房先生"]={thing:"算盘",where:"黄昏账房",line:"你怕欠，也怕有些心意从此没处落账。"};
+RESULT_META["凡人_绣娘"]={thing:"铜锁和帕子",where:"窗边绣房",line:"你锁住的不是帕子，是当年没敢敲门的自己。"};
+RESULT_META["凡人_采药人"]={thing:"药柜最上层",where:"山脚药庐",line:"你怕好心也会生出祸端，可门外一有响动，你还是会先去开门。"};
+RESULT_META["凡人_守夜人"]={thing:"灯笼和梆子",where:"肉铺后巷",line:"你怕黑，也怕第二天有人问，昨夜怎么没人醒着。"};
+var ID_TO_SLUG={};
+ID_TO_SLUG["凡人_说书人"]="shuoshuren";
+ID_TO_SLUG["凡人_店小二"]="dianxiaoer";
+ID_TO_SLUG["凡人_厨子"]="chuzi";
+ID_TO_SLUG["凡人_镖师"]="biaoshi";
+ID_TO_SLUG["凡人_账房先生"]="zhangfangxiansheng";
+ID_TO_SLUG["凡人_绣娘"]="xiuniang";
+ID_TO_SLUG["凡人_采药人"]="caiyaoren";
+ID_TO_SLUG["凡人_守夜人"]="shouyeren";
+var COLORS={};
+COLORS["凡人_说书人"]="#9a7536";
+COLORS["凡人_店小二"]="#b77943";
+COLORS["凡人_厨子"]="#8f7f62";
+COLORS["凡人_镖师"]="#4d668b";
+COLORS["凡人_账房先生"]="#3f7658";
+COLORS["凡人_绣娘"]="#a56772";
+COLORS["凡人_采药人"]="#5d8a54";
+COLORS["凡人_守夜人"]="#934c3e";
+function $(id){return document.getElementById(id)}
+function hideAll(){var ids=['splash','test','result','storyPhase','finalStory'];for(var i=0;i<ids.length;i++){$(ids[i]).style.display="none"}}
+function recalc(){scores={};for(var qi=0;qi<answers.length;qi++){var idx=answers[qi];var q=QUESTIONS[qi];if(q&&q.opts){var opt=q.opts[idx];if(opt&&opt.s){var ks=Object.keys(opt.s);for(var kk=0;kk<ks.length;kk++){var k=ks[kk];var v=opt.s[k];scores[k]=(scores[k]||0)+v}}}}}
+function startTest(){hideAll();$('test').style.display='flex';currentQ=0;answers=[];scores={};selectedId=null;renderQ()}
+function renderQ(){var q=QUESTIONS[currentQ];$('progressText').textContent=(currentQ+1)+' / '+QUESTIONS.length;$('progressFill').style.width=((currentQ+1)/QUESTIONS.length*100)+'%';var h='<div class="fade"><div class="chapter">凭第一念选</div><h2 class="question">'+q.q+'</h2><p class="hint">不必求准。哪一句先入了眼，就选哪一句。</p><div class="options">';for(var i=0;i<q.opts.length;i++){var o=q.opts[i];var sel=(answers[currentQ]===i?' selected':'');h+='<button class="option'+sel+'" onclick="choose('+i+')"><span class="mark">'+LETTERS[i]+'</span><span>'+o.t+'</span></button>'}h+='</div><div class="navrow">';if(currentQ>0){h+='<button class="btn ghost" onclick="prevQ()">回上一念</button>'}else{h+='<span></span>'}h+='<button class="btn ghost" onclick="startTest()">重来</button></div></div>';$('questionArea').innerHTML=h}
+function choose(i){answers[currentQ]=i;recalc();setTimeout(function(){currentQ++;if(currentQ<QUESTIONS.length){renderQ()}else{showResult()}},160)}
+function prevQ(){if(currentQ>0){currentQ--;renderQ()}}
+function bestId(){var keys=Object.keys(scores);if(keys.length===0){return Object.keys(IDENTITIES)[0]}var top=0;for(var i=0;i<keys.length;i++){top=Math.max(top,scores[keys[i]])}var tied=[];for(var i=0;i<keys.length;i++){if(scores[keys[i]]===top){tied.push(keys[i])}}return tied[Math.floor(Math.random()*tied.length)]}
+function paraText(txt){var s=String(txt||'').replace(/\s+/g,'');var result=s.match(/[^\u3002\uff01\uff1f]*[\u3002\uff01\uff1f]/g);if(!result||result.length===0){return'<p>'+txt+'</p>'}var out='';for(var i=0;i<result.length;i++){out+='<p>'+result[i]+'</p>'}return out}
+function showResult(){hideAll();$('result').style.display='flex';selectedId=bestId();var id=IDENTITIES[selectedId];var m=RESULT_META[selectedId]||{};var accent=COLORS[selectedId]||'#7e5f32';var slug=ID_TO_SLUG[selectedId];$('resultContent').innerHTML='<div class="result-head fade"><div class="smalltitle">你的故事落在</div><div class="identity-emoji">'+id.emoji+'</div><div class="identity-name" style="color:'+accent+'">'+id.name+'</div><div class="identity-meta"><span class="pill">旧物：'+(m.thing||'一件旧物')+'</span><span class="pill">所在：'+(m.where||'西游路旁')+'</span></div></div><img class="result-hero-image" src="assets/results/'+slug+'.png" alt="'+id.name+'" loading="lazy"><div class="storybox fade" style="border-color:'+accent+'33"><p style="color:'+accent+';font-weight:700">'+(m.line||'你有一件事，藏在日子深处。')+'</p>'+paraText(id.story)+'</div><div class="actions"><button class="btn" onclick="enterStory()">走进这一世</button><button class="btn secondary" onclick="shareResult()">分享身份</button><button class="btn ghost" onclick="startTest()">再入一世</button></div>'}
+function enterStory(){hideAll();$('storyPhase').style.display='flex';storyStep=0;storyChoices=[];renderStory()}
+function renderStory(){var steps=STORIES[selectedId];if(!steps||storyStep>=steps.length){showFinal();return}var st=steps[storyStep];$('storyTitle').textContent='这一世的分岔';var h='<div class="storybox fade">'+paraText(st.scene)+'</div><div class="options">';for(var i=0;i<st.choices.length;i++){var c=st.choices[i];h+='<button class="option story-choice" onclick="pickStory('+i+')"><span class="mark">'+LETTERS[i]+'</span><span>'+c.text+'</span></button>'}h+='</div>';$('storyContent').innerHTML=h}
+function pickStory(i){storyChoices.push(STORIES[selectedId][storyStep].choices[i]);selectedBranch=(i===0)?'a':'b';storyStep++;renderStory()}
+function showFinal(){hideAll();$('finalStory').style.display='flex';var id=IDENTITIES[selectedId];var accent=COLORS[selectedId]||'#7e5f32';var slug=ID_TO_SLUG[selectedId];var ends=STORY_ENDINGS[selectedId]||[];var txt='';for(var si=0;si<storyChoices.length;si++){txt+=storyChoices[si].result||''}if(ends.length>0){txt+=ends[Math.floor(Math.random()*ends.length)]}var branchImg = (selectedBranch&&selectedBranch.length>0)?'<img class="final-branch-image" src="assets/results/'+slug+'_'+selectedBranch+'.png" alt="" loading="lazy">':'';$('finalContent').innerHTML='<div class="reading-title fade"><div class="over">你的故事</div><h2 style="color:'+accent+'">'+id.name+'</h2></div><div class="divider"></div>'+(branchImg||'')+'<article class="reading-text fade">'+paraText(txt)+'</article><div class="divider"></div><div class="actions"><button class="btn" onclick="shareResult()">分享这一世</button><button class="btn secondary" onclick="startTest()">再入一世</button></div>'}
+function shareResult(){var id=IDENTITIES[selectedId]||{};var text='我在「三千世界·凡人西游篇」里是「'+(id.name||'凡人')+'」。';if(navigator.share){navigator.share({title:'三千世界·凡人西游篇',text:encodeURI(location.href)}).catch(function(){})}else{var t=document.createElement('textarea');t.value=text+'\n'+location.href;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);alert('已复制。')}}</script>
+</body>
+</html>
